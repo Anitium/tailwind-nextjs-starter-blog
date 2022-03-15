@@ -1,0 +1,23 @@
+{
+  "greeting": "Ultimos",
+  "more": "Leer mas",
+  "all": "Todos",
+  "search": "Buscar articulos",
+  "comment": "Comentarios",
+  "pub": "Publicado",
+  "authors": "Autores",
+  "name": "Nombre",
+  "nexta": "Proximo Artículo",
+  "preva": "Artículo Anterior",
+  "nextp": "Próximo",
+  "prevp": "Previo",
+  "of": "de",
+  "back": "Retornar al Blog",
+  "twitter": "Ver en Twitter",
+  "github": "View en GitHub",
+  "hi": "Hola, yo soy",
+  "mini-bio": "Ingeniero en sistema apasionado de la programacion y el diseño.",
+  "learning": "Aprendizaje",
+  "about": "Acerma de mi",
+  "about-description": "Lee mas acerca de mi"
+}

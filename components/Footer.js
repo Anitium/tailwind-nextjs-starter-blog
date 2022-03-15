@@ -1,8 +1,10 @@
 import Link from './Link'
 import siteMetadata from '@/data/siteMetadata'
 import SocialIcon from '@/components/social-icons'
+import { useRouter } from 'next/router'
 
 export default function Footer() {
+  const { locale } = useRouter()
   return (
     <footer>
       <div className="mt-16 flex flex-col items-center">
@@ -19,11 +21,11 @@ export default function Footer() {
           <div>{` • `}</div>
           <div>{`© ${new Date().getFullYear()}`}</div>
           <div>{` • `}</div>
-          <Link href="/">{siteMetadata.title}</Link>
+          <Link href="/">{siteMetadata.title[locale]}</Link>
         </div>
         <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
           <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
-            Tailwind Nextjs Theme
+            {siteMetadata.title[locale]}
           </Link>
         </div>
       </div>

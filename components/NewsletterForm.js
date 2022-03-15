@@ -1,8 +1,10 @@
 import { useRef, useState } from 'react'
 
 import siteMetadata from '@/data/siteMetadata'
+import useTranslation from 'next-translate/useTranslation'
 
 const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
+  const { t } = useTranslation()
   const inputEl = useRef(null)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
@@ -24,14 +26,12 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
     const { error } = await res.json()
     if (error) {
       setError(true)
-      setMessage('Your e-mail address is invalid or you are already subscribed!')
       return
     }
 
     inputEl.current.value = ''
     setError(false)
     setSubscribed(true)
-    setMessage('Successfully! 🎉 You are now subscribed.')
   }
 
   return (
@@ -40,14 +40,16 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
       <form className="flex flex-col sm:flex-row" onSubmit={subscribe}>
         <div>
           <label className="sr-only" htmlFor="email-input">
-            Email address
+            {t('newsletter:mail')}
           </label>
           <input
             autoComplete="email"
             className="w-72 rounded-md px-4 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-black"
             id="email-input"
             name="email"
-            placeholder={subscribed ? "You're subscribed !  🎉" : 'Enter your email'}
+            placeholder={
+              subscribed ? t('newsletter:placeholderSucces') : t('newsletter:placeholderDefault')
+            }
             ref={inputEl}
             required
             type="email"
@@ -62,12 +64,14 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
             type="submit"
             disabled={subscribed}
           >
-            {subscribed ? 'Thank you!' : 'Sign up'}
+            {subscribed ? t('newsletter:buttonSuccess') : t('newsletter:buttonDefault')}
           </button>
         </div>
       </form>
       {error && (
-        <div className="w-72 pt-2 text-sm text-red-500 dark:text-red-400 sm:w-96">{message}</div>
+        <div className="w-72 pt-2 text-sm text-red-500 dark:text-red-400 sm:w-96">
+          {t('newsletter:messageError')}
+        </div>
       )}
     </div>
   )
