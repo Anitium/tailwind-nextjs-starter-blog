@@ -5,19 +5,26 @@ const DEFAULT_LAYOUT = 'AuthorLayout'
 
 export async function getStaticProps({ locale, defaultLocale, locales }) {
   const otherLocale = locale !== defaultLocale ? locale : ''
-  const authorDetails = await getFileBySlug('authors', [`sparrowhawk`], otherLocale)
-  return { props: { authorDetails, availableLocales: locales } }
+  const karel = await getFileBySlug('authors', [`default`], otherLocale)
+  const juan = await getFileBySlug('authors', [`juancolamendy`], otherLocale)
+  return { props: { karel, juan, availableLocales: locales } }
 }
 
-export default function About({ authorDetails, availableLocales }) {
-  const { mdxSource, frontMatter } = authorDetails
-
+export default function About({ karel, juan, availableLocales }) {
   return (
-    <MDXLayoutRenderer
-      layout={frontMatter.layout || DEFAULT_LAYOUT}
-      mdxSource={mdxSource}
-      frontMatter={frontMatter}
-      availableLocales={availableLocales}
-    />
+    <>
+      <MDXLayoutRenderer
+        layout={karel.frontMatter.layout || DEFAULT_LAYOUT}
+        mdxSource={karel.mdxSource}
+        frontMatter={karel.frontMatter}
+        availableLocales={availableLocales}
+      />
+      <MDXLayoutRenderer
+        layout={juan.frontMatter.layout || DEFAULT_LAYOUT}
+        mdxSource={juan.mdxSource}
+        frontMatter={juan.frontMatter}
+        availableLocales={availableLocales}
+      />
+    </>
   )
 }
