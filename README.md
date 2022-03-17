@@ -17,6 +17,8 @@ Facing issues? Check the [FAQ page](https://github.com/timlrx/tailwind-nextjs-st
 
 Feature request? Check the past discussions to see if it has been brought up previously. Otherwise, feel free to start a new discussion thread. All ideas are welcomed!
 
+# Remote git change
+
 ## Examples
 
 - [Demo Blog](https://tailwind-nextjs-starter-blog.vercel.app/) - this repo
